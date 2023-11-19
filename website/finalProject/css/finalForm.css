@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+
+input, label, select
+{
+    display:block;
+    padding:10px;
+    height:0px;
+    margin:10px 5px;
+    
+
+}
+
+form
+{
+    width:25%;
+    font-size: 20px;
+    font-family: sans-serif;
+    margin-left:20px;
+}
+
+button
+{
+    margin-left:20px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+fieldset
+{
+    height:400px;
+}
+
+label
+{
+    padding-bottom:25px;
+    padding-left:0px;
+    
+}
+
+img {
+    object-fit: contain;
+}
+
+#formPic {
+    float:right;width:420px;height:420px;
+}
+
