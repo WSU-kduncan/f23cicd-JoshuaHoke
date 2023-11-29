@@ -53,3 +53,23 @@
     `http://localhost:8080`
 
     and one should then see one's website displayed on one's monitor/screen.
+
+## Part 2 - GitHub Actions and DockerHub
+
+- Process to create public repo in DockerHub
+	- 
+- How to authenticate with DockerHub via CLI using Dockerhub credentials
+  - what credentials would you recommend providing?
+- How to push container image to Dockerhub (without GitHub Actions)
+- **Link** to your DockerHub repository
+- Configuring GitHub Secrets
+  - How to set a secret
+  - What secret(s) are set for this project
+    - Note: do not copy paste your secrets into your documentation
+- Behavior of GitHub workflow
+  - what does it do and when
+  - what variables in workflow are custom to your project
+    - think may need to be changed if someone else is going to use it or you reuse it
+
+
+
