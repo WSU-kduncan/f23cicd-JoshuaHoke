@@ -68,15 +68,15 @@
 	- After dealing with those choices, click the "Create" button to create your repo. 
 - How to authenticate with DockerHub via CLI using Dockerhub credentials
 	- Use the docker login command. This command prompts you to enter your DockerHub username
-	  and password to establish a secure connection to DockerHub: `docker login -u <your-username>`, e.g. `docker login -u jjh0k3`.
+	  and password to establish a secure connection to DockerHub: `docker login -u <Dockerhub-username>`, e.g. `docker login -u jjh0k3`.
           You'll be prompted to enter your DockerHub password. Type your password and press Enter. 
         - That's all there is to it. If the login is successful, you'll see a message telling you so.  
 - what credentials would you recommend providing? 
 		- I would recommend using a PAT instead of a password. 
 - How to push container image to Dockerhub (without GitHub Actions) 
-	- Just open a terminal and login to Dockerhub with `docker login -u <your-username>`, e.g. `docker login -u jjh0k3`.
+	- Just open a terminal and login to Dockerhub with `docker login -u <Dockerhub-username>`, e.g. `docker login -u jjh0k3`.
         - You will then be prompted to enter your DockerHub password. 
-        - Before you push your local image to Dockerhub, you must tag the image with `docker tag <local-image-name> <your-username>/<repository-name>`. 
+        - Before you push your local image to Dockerhub, you must tag the image with `docker tag <local-image-name> <Dockerhub-username>/<repository-name>`. 
         - Once you have tagged the image, you can then push it on over to Dockerhub with `docker push <your-username>/<repository-name>`, 
           e.g.`docker push jjh0k3/f23-catsite:latest`.
         - Go to Dockerhub in a web browser, and make your way to the repo you pushed to. There you should see the pushed image.
@@ -84,6 +84,7 @@
 	- [Dockerhub repo](https://hub.docker.com/repository/docker/jjh0k3/clockbox/general)
 - Configuring GitHub Secrets
   - How to set a secret
+  	- Go to ypu Github repo in some browser. Go to `Settings`. Click on `Secrets`. Click on the `New repository secret` button. Give your new secret a name and           a value. Finally, save the secret by clicking on the `Add secret` button. The new secret can now be used in your Github Actions workflows!
   - What secret(s) are set for this project
     - Note: do not copy paste your secrets into your documentation
 - Behavior of GitHub workflow
