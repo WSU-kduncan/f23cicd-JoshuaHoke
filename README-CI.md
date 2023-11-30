@@ -57,10 +57,24 @@
 ## Part 2 - GitHub Actions and DockerHub
 
 - Process to create public repo in DockerHub
-	- 
+	- First of all you need to have a Dockerhub account. Go to the repositories screen. Click the "Create Repository" button. 
+	- After that, you simply configure the settings for the repository, such as: 
+		- Namespace/Owner: Choose your DockerHub username or an organization you belong to.
+		- Repository Name: Give your repository a (unique) name.
+                - Visibility: Choose "Public" to make the repository public.
+                - Repository Type: Choose "Image" for a regular Docker image repository. 
+        - Next you can optionally add a description of your repo and you can optionally link your
+          GitHub repo to automatically build Docker images whenever you push changes to your source code.
+	- After dealing with those choices, click the "Create" button to create your repo. 
 - How to authenticate with DockerHub via CLI using Dockerhub credentials
-  - what credentials would you recommend providing?
-- How to push container image to Dockerhub (without GitHub Actions)
+	- Use the docker login command. This command prompts you to enter your DockerHub username
+	  and password to establish a secure connection to DockerHub: `docker login -u <your-username>`.
+          You'll be prompted to enter your DockerHub password. Type your password and press Enter. 
+          That's all there is to it. If the login is successful, you'll see a message telling you so.  
+        - what credentials would you recommend providing? 
+		- I would recommend using a PAT instead of a password. 
+- How to push container image to Dockerhub (without GitHub Actions) 
+
 - **Link** to your DockerHub repository
 - Configuring GitHub Secrets
   - How to set a secret
