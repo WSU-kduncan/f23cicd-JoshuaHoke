@@ -74,8 +74,13 @@
         - what credentials would you recommend providing? 
 		- I would recommend using a PAT instead of a password. 
 - How to push container image to Dockerhub (without GitHub Actions) 
-
-- **Link** to your DockerHub repository
+	- Just open a terminal and login to Dockerhub with `docker login -u <your-username>`. You will then be prompted 
+	  to enter your DockerHub password. Before you push your local image to Dockerhub, you must tag the image with 
+          `docker tag <local-image-name> <your-username>/<repository-name>`. Once you have tagged the image, you can then 
+          push it on over to Dockerhub with `docker push <your-username>/<repository-name>`. Go to Dockerhub in a web browser, and 
+          make your way to the repo you pushed to. There you should see the pushed image.
+- **Link** to your DockerHub repository 
+	- [Dockerhub repo](https://hub.docker.com/repository/docker/jjh0k3/clockbox/general)
 - Configuring GitHub Secrets
   - How to set a secret
   - What secret(s) are set for this project
