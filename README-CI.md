@@ -68,17 +68,18 @@
 	- After dealing with those choices, click the "Create" button to create your repo. 
 - How to authenticate with DockerHub via CLI using Dockerhub credentials
 	- Use the docker login command. This command prompts you to enter your DockerHub username
-	  and password to establish a secure connection to DockerHub: `docker login -u <your-username>`.
+	  and password to establish a secure connection to DockerHub: `docker login -u <your-username>`, e.g. `docker login -u jjh0k3`.
           You'll be prompted to enter your DockerHub password. Type your password and press Enter. 
-          That's all there is to it. If the login is successful, you'll see a message telling you so.  
-        - what credentials would you recommend providing? 
+        - That's all there is to it. If the login is successful, you'll see a message telling you so.  
+- what credentials would you recommend providing? 
 		- I would recommend using a PAT instead of a password. 
 - How to push container image to Dockerhub (without GitHub Actions) 
-	- Just open a terminal and login to Dockerhub with `docker login -u <your-username>`. You will then be prompted 
-	  to enter your DockerHub password. Before you push your local image to Dockerhub, you must tag the image with 
-          `docker tag <local-image-name> <your-username>/<repository-name>`. Once you have tagged the image, you can then 
-          push it on over to Dockerhub with `docker push <your-username>/<repository-name>`. Go to Dockerhub in a web browser, and 
-          make your way to the repo you pushed to. There you should see the pushed image.
+	- Just open a terminal and login to Dockerhub with `docker login -u <your-username>`, e.g. `docker login -u jjh0k3`.
+        - You will then be prompted to enter your DockerHub password. 
+        - Before you push your local image to Dockerhub, you must tag the image with `docker tag <local-image-name> <your-username>/<repository-name>`. 
+        - Once you have tagged the image, you can then push it on over to Dockerhub with `docker push <your-username>/<repository-name>`, 
+          e.g.`docker push jjh0k3/f23-catsite:latest`.
+        - Go to Dockerhub in a web browser, and make your way to the repo you pushed to. There you should see the pushed image.
 - **Link** to your DockerHub repository 
 	- [Dockerhub repo](https://hub.docker.com/repository/docker/jjh0k3/clockbox/general)
 - Configuring GitHub Secrets
