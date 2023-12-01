@@ -85,10 +85,10 @@
 - Configuring GitHub Secrets
   - How to set a secret
   	- Go to ypu Github repo in some browser. Go to `Settings`. Click on `Secrets`. Click on the `New repository secret` button. Give your new secret a name and           a value. Finally, save the secret by clicking on the `Add secret` button. The new secret can now be used in your Github Actions workflows!
-  - What secret(s) are set for this project
-    - Note: do not copy paste your secrets into your documentation
+  - What secret(s) are set for this project? 
+  	- GitHub Secrets named DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD, which contain my Dockerhub username and PAT.
 - Behavior of GitHub workflow
-  - what does it do and when
+  - what does it do and when 
   - what variables in workflow are custom to your project
     - think may need to be changed if someone else is going to use it or you reuse it
 
