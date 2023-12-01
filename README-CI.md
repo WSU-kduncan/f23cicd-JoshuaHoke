@@ -89,7 +89,12 @@
   	- GitHub Secrets named DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD, which contain my Dockerhub username and PAT.
 - Behavior of GitHub workflow
   - what does it do and when 
-  - what variables in workflow are custom to your project
+  	- Workflows are configurable, automated processes that will run one or more jobs. They are defined by a YAML file checked in to your 
+          repository and will run when triggered by an event in your repository. They can also be triggered manually, or at a defined schedule.
+	  Workflows are defined in the .github/workflows directory in a repository. A repository can have multiple workflows, and each of them
+          can perform a different set of tasks.
+  - what variables in workflow are custom to your project? 
+  - `${{ secrets.DOCKERHUB_USERNAME }}` and `${{ secrets.DOCKERHUB_PASSWORD }}`  	
     - think may need to be changed if someone else is going to use it or you reuse it
 
 
