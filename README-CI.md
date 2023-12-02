@@ -94,14 +94,15 @@
 	  Workflows are defined in the .github/workflows directory in a repository. A repository can have multiple workflows, and each of them
           can perform a different set of tasks.
         - In the case of the workflow I used, it basically automates the process of building a Docker image from the code in my repository and pushing it to Docker 	      Hub whenever changes are pushed to the "main" branch: 
-		```
-          name: ci
-
-on:
-  push:
-    branches:
-      - "main"
-```      
+		- The `name` field sets the name of my workflow. In this case, it's named `ci`.
+		- The `on` field specifies the events that trigger the workflow. This workflow is triggered on each push to the "main" branch.
+		- The `jobs` section defines a job named `build`. This job runs on an Ubuntu environment (`ubuntu-latest`).
+		- The first step is named `Checkout` and uses the `actions/checkout` action to fetch the repository's content. 
+		- The second step is named `Login to Docker Hub` and uses the `docker/login-action` action to log in to Docker Hub. 
+		  It uses the DockerHub username and password stored in GitHub Secrets.
+		- The third step is named `Set up Docker Buildx` and uses the `docker/setup-buildx-action` action to set up Docker Buildx.
+		- The fourth step is named `Build and push` and uses the `docker/build-push-action` action to build a Docker image from the
+                  specified Dockerfile and push it to Docker Hub. The image is tagged with the latest tag.   
   - what variables in workflow are custom to your project? 
   - `${{ secrets.DOCKERHUB_USERNAME }}` and `${{ secrets.DOCKERHUB_PASSWORD }}`  	
     - think may need to be changed if someone else is going to use it or you reuse it
