@@ -1,4 +1,4 @@
-- CI Project Overview
+## Part 1 - Dockerize it
   - (what are you doing, why, what tools)
     - Containerize an application with Docker by pulling the Docker Official image for HTTPD from Dockerhub. Next, I build a container from the image over the Docke      rfile I've created in the same directory as my website files.
 - Run Project Locally
