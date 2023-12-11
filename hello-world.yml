@@ -1,0 +1,14 @@
+# when to go
+on:
+  push
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say-Hello
+        run: echo "Hello World!"  
+      - name: Install-packages
+        run: apt install fortune
+      - name: get-fortune
+        run: fortune
