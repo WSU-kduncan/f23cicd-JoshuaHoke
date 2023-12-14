@@ -4,7 +4,7 @@ import random
 
 app = Flask(__name__)
 
-print("Hello world. Hello Changeling.")
+print("Hello world. Hello Changeling, How's things?")
 
 # list of cat images
 images = [
