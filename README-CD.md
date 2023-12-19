@@ -113,7 +113,7 @@ on:
     - It's called `pull-restart.sh` and it's an executable bash script file. The justification and 
    description are pretty sel-evident from reading the file contents: 
 
-		 ```
+		 		```
 				#!/bin/bash
 				# kill & remove the container
 				docker kill webapp
@@ -122,7 +122,7 @@ on:
 				docker image rm jjh0k3/clockbox:latest
 				docker run -d -p 80:80 --name webapp --restart unless-stopped jjh0k3/clockbox:latest 
 
-``` 
+				 ``` 
 
     - You can see that it is removing an old image and re-running a new image for the same app. It is necessary that the old one be removed 
 in order to unbind the ports and clear the way for the new image. 
@@ -140,7 +140,7 @@ It should be in plain sight in the home directory of the instance.
   - Description of what it does: 
     - These are its contents: 
 
-		``` 
+				``` 
 				[
   				  {
     				    "id": "redeploy-webhook",
@@ -148,11 +148,6 @@ It should be in plain sight in the home directory of the instance.
                                   }
                                 ] 
 
-```
-
-
-
-
-
+				```
 
   - Where it should be on the instance (if someone were to use your setup)
