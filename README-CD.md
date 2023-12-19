@@ -141,12 +141,12 @@ It should be in plain sight in the home directory of the instance.
     - These are its contents: 
 
 		``` 
-[
-  {
-    "id": "redeploy-webhook",
-    "execute-command": "/home/ubuntu/pull-restart.sh"
-  }
-] 
+				[
+  				  {
+    				    "id": "redeploy-webhook",
+    				    "execute-command": "/home/ubuntu/pull-restart.sh"
+                                  }
+                                ] 
 
 ```
 
