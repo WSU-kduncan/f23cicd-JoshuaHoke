@@ -87,5 +87,7 @@ on:
    sets the build context to the current directory, specifies the location of the Dockerfile to be used for building the Docker image, 
    and indicates that the action should push the Docker image to the specified registry after building it. Finally, at the very end 
    is a multi-line string block where Docker image tags are specified (the last line is actually unnecessary, it turns out).
+- Link to Docker Hub repository (as additional proof):
+	- [DockerHub repo](https://hub.docker.com/repository/docker/jjh0k3/clockbox/general)
 
 
