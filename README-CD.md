@@ -21,50 +21,50 @@
     - multiple workflows can exist in a repository
   - For example here are the contents of a workflow file I made called `main.yml`: 
  
-    ```
-name: ci
-on:
-  push:
-    tags:
-      - 'v*.*.*'      
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - 
-        name: Checkout
-        uses: actions/checkout@v4
-      - 
-        name: Get Docker Metadata
-        id: docker_metadata
-        uses: docker/metadata-action@v3
-        with:
-          images: '${{ secrets.DOCKERHUB_USERNAME }}/clockbox'
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-      - 
-        name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: |
-            ${{ steps.docker_metadata.outputs.tags }}
-            ${{ steps.docker_metadata.outputs.tags }}-latest
+    		```
+		name: ci
+		  on:
+  		    push:
+    		      tags:
+      		        - 'v*.*.*'      
+		jobs:
+  		  build:
+    		    runs-on: ubuntu-latest
+    	              steps:
+      		- 
+                    name: Checkout
+        		uses: actions/checkout@v4
+      		- 
+        		name: Get Docker Metadata
+        		id: docker_metadata
+        		uses: docker/metadata-action@v3
+        		with:
+          		images: '${{ secrets.DOCKERHUB_USERNAME }}/clockbox'
+          		tags: |
+            		type=ref,event=branch
+            		type=ref,event=pr
+            		type=semver,pattern={{version}}
+            		type=semver,pattern={{major}}.{{minor}}
+            		type=semver,pattern={{major}}
+      		- 
+        		name: Login to Docker Hub
+        		uses: docker/login-action@v3
+        		with:
+          		username: ${{ secrets.DOCKERHUB_USERNAME }}
+          		password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      		- name: Set up QEMU
+        		uses: docker/setup-qemu-action@v3
+      		- name: Set up Docker Buildx
+        		uses: docker/setup-buildx-action@v3
+      		- name: Build and push
+        		uses: docker/build-push-action@v5
+        		with:
+          		context: .
+          		file: ./Dockerfile
+          		push: true
+          		tags: |
+            		${{ steps.docker_metadata.outputs.tags }}
+            		${{ steps.docker_metadata.outputs.tags }}-latest
 ```
   - In this workflow file 
     - `name` is the name of the workflow and will be visible in GitHub Actions. 
