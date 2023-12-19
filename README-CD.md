@@ -10,9 +10,9 @@
     GitHub to automatically push a new, tagged, semantically versioned image over to DockerHub. DockerHub in turn works with Webhook 
     to set up a hook that runs a redeploy script for my Royal Bonsai Society website on my AWS instance, allowing the newest stable version of the 
     website to be instantly available to the teeming masses of fans and enthusiasts, just dripping with Bonsai goodness.  
-  - - How to generate a `tag` in `git` / GitHub  
-      All you have to do is simply use a command like `git tag -a v3.0.0`. This will by default tag the last commit made. Next, push it on over to GitHubville 
-      with a command of this nature: `git push origin v3.0.0`. Now the tagged commit is on Github and can be utilized or rolled back to. 
+  - How to generate a `tag` in `git` / GitHub   
+    All you have to do is simply use a command like `git tag -a v3.0.0`. This will by default tag the last commit made. Next, push it on over to GitHubville 
+    with a command of this nature: `git push origin v3.0.0`. Now the tagged commit is on Github and can be utilized or rolled back to. 
 
 
 
