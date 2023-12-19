@@ -20,6 +20,7 @@
     - will run when triggered by an event in your repository, or they can be triggered manually, or at a defined schedule
     - multiple workflows can exist in a repository
   - For example here are the contents of a workflow file I made called `main.yml`: 
+ 
     ```
 name: ci
 on:
@@ -68,6 +69,7 @@ jobs:
   - In this workflow file 
     - `name` is the name of the workflow and will be visible in GitHub Actions. 
     ```
+
 on:
   push:
     tags:
