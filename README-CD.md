@@ -1,4 +1,4 @@
-## Part 1 - Semantic Versioning  
+# Part 1 - Semantic Versioning  
 
 ### Documentation  
 
@@ -22,14 +22,10 @@
   - For example here are the contents of a workflow file I made called `main.yml`: 
     ```
 name: ci
-
-
 on:
   push:
     tags:
       - 'v*.*.*'      
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
