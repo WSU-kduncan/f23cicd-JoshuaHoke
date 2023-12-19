@@ -129,4 +129,30 @@ in order to unbind the ports and clear the way for the new image.
 
   - Where it should be on the instance (if someone were to use your setup): 
 It should be in plain sight in the home directory of the instance. 
+- Setting up a `webhook` on the instance
+  - How to install [adnanh's `webhook`](https://github.com/adnanh/webhook) to the instance: 
+    - adnanh says `If you are using Ubuntu linux (17.04 or later), you can install webhook using sudo apt-get install webhook which will install community packaged version.` So that is what I did. 
+  - How to start the `webhook: 
+    - since our instance's reboot, we need to handle this 
+    - So you should initially use `sudo systemctl restart webhook, and there is also the `sudo systemctl start webhook` command. 
+- `webhook` task definition file: 
+  - This is called `hooks.json` in this project. 
+  - Description of what it does: 
+    - These are its contents: 
 
+		``` 
+[
+  {
+    "id": "redeploy-webhook",
+    "execute-command": "/home/ubuntu/pull-restart.sh"
+  }
+] 
+
+```
+
+
+
+
+
+
+  - Where it should be on the instance (if someone were to use your setup)
