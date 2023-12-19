@@ -3,16 +3,91 @@
 ### Documentation  
 
 - CD Project Overview
-  - (what are you doing, why, what tools)  
+  - (what are you doing, why, what tools?)  
     I used WSL2 Ubuntu along with Git, GitHub (Actions (Workflows)), Docker, DockerHub, and Webhook in order to create a basic   
     CI/CD (Continuous Integration/Continuous Deployment) pipeline which, after I've used Git to commit code changes 
     and assigned a Semantic Versioning tag to particular commits (the last commit made, by default), and then pushed the tagged commit over to GitHub, enables 
     GitHub to automatically push a new, tagged, semantically versioned image over to DockerHub. DockerHub in turn works with Webhook 
     to set up a hook that runs a redeploy script for my Royal Bonsai Society website on my AWS instance, allowing the newest stable version of the 
     website to be instantly available to the teeming masses of fans and enthusiasts, just dripping with Bonsai goodness.  
-  - How to generate a `tag` in `git` / GitHub   
-    All you have to do is simply use a command like `git tag -a v3.0.0`. This will by default tag the last commit made. Next, push it on over to GitHubville 
-    with a command of this nature: `git push origin v3.0.0`. Now the tagged commit is on Github and can be utilized or rolled back to. 
+- How to generate a `tag` in `git` / GitHub:   
+  All you have to do is simply use a command like `git tag -a v3.0.0`. This will by default tag the last commit made. Next, push it on over to GitHubville 
+  with a command of this nature: `git push origin v3.0.0`. Now the tagged commit is on Github and can be utilized or rolled back to. 
+- Behavior of GitHub workflow
+  - what does it do and when? 
+    - A workflow is a configurable automated process that will run one or more jobs
+    - Workflow is written in `YAML` files located in `.github/workflows`
+    - will run when triggered by an event in your repository, or they can be triggered manually, or at a defined schedule
+    - multiple workflows can exist in a repository
+  - For example here are the contents of a workflow file I made called `main.yml`: 
+    ```
+name: ci
 
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'      
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@v4
+      - 
+        name: Get Docker Metadata
+        id: docker_metadata
+        uses: docker/metadata-action@v3
+        with:
+          images: '${{ secrets.DOCKERHUB_USERNAME }}/clockbox'
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+      - 
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ steps.docker_metadata.outputs.tags }}
+            ${{ steps.docker_metadata.outputs.tags }}-latest
+```
+  - In this workflow file 
+    - `name` is the name of the workflow and will be visible in GitHub Actions. 
+    ```
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+```
+    - specifies that the workflow will run whenever tags are pushed to the code repo and checks for semantic versioning. 
+    - If you read through the rest of the workflow file you can begin to understand how it goes on to define a list 
+   of `jobs` (this workflow only has one job, named `build`). Each `job` has its very own server/runner that it `runs-on`, 
+   and you can see that `build` `runs-on` a latest stable Ubuntu runner. Each job consists of a series of (named) steps, which are either commands
+   (designated wit `run`or fancy pre-fabricated actions (designated by `uses`. This workflow only has six actions, the first of which basically clones 
+   the repo into the runner, the second of which extracts metadata from Git reference and GitHub events, the third of which logs into Dockerhub, 
+   the fourth installs QEMU static binaries, the fifth creates and boots a builder that can be used in the following steps of 
+   your workflow if you’re using Buildx or the build-push action, and finally the sixth step builds and pushes Docker images 
+   with Buildx with full support of the features provided by Moby BuildKit builder toolkit. The code block at the bottom 
+   sets the build context to the current directory, specifies the location of the Dockerfile to be used for building the Docker image, 
+   and indicates that the action should push the Docker image to the specified registry after building it. Finally, at the very end 
+   is a multi-line string block where Docker image tags are specified (the last line is actually unnecessary, it turns out).
 
 
