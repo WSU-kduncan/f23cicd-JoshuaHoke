@@ -108,4 +108,25 @@ on:
     - `sudo apt-get upgrade` 
     - `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin` 
     - `sudo docker run hello-world` (to verify) 
+- Container restart script
+  - Justification & description of what it does: 
+    - It's called `pull-restart.sh` and it's an executable bash script file. The justification and 
+   description are pretty sel-evident from reading the file contents: 
+
+		 ```
+				#!/bin/bash
+				# kill & remove the container
+				docker kill webapp
+				docker remove webapp
+				# once dead and removed, the image it references can be removed
+				docker image rm jjh0k3/clockbox:latest
+				docker run -d -p 80:80 --name webapp --restart unless-stopped jjh0k3/clockbox:latest 
+
+``` 
+
+    - You can see that it is removing an old image and re-running a new image for the same app. It is necessary that the old one be removed 
+in order to unbind the ports and clear the way for the new image. 
+
+  - Where it should be on the instance (if someone were to use your setup): 
+It should be in plain sight in the home directory of the instance. 
 
