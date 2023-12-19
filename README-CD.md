@@ -155,4 +155,4 @@ It should be in plain sight in the home directory of the instance.
 - How to configure DockerHub to message the listener: 
   - In your DockerHub repo, go to the webhooks tab, and create a webhook with a name like `Janet`and a URL like `http://34.192.173.19:9000/hooks/example`. 
 now you can send HTTP POST requests to a specified URL when an event occurs (e.g., a new image is built). 
-After you've done that you can enter something like `http://yourserver:9000/hooks/redeploy-webhook` in your brpwser to see if it works for a website!
+After you've done that you can enter something like `http://yourserver:9000/hooks/redeploy-webhook` in your browser to see if it works for a website!
