@@ -87,7 +87,25 @@ on:
    sets the build context to the current directory, specifies the location of the Dockerfile to be used for building the Docker image, 
    and indicates that the action should push the Docker image to the specified registry after building it. Finally, at the very end 
    is a multi-line string block where Docker image tags are specified (the last line is actually unnecessary, it turns out).
-- Link to Docker Hub repository (as additional proof):
+- Link to Docker Hub repository (as additional proof): 
 	- [DockerHub repo](https://hub.docker.com/repository/docker/jjh0k3/clockbox/general)
 
+## Part 2 - Deployment 
+
+### Documentation 
+
+- How to install Docker to your instance: 
+  I installed Docker with the following series of individually entered commands: 
+    - `sudo apt-get update` 
+    - `sudo apt-get upgrade` 
+    - `sudo apt-get install ca-certificates curl gnupg`
+    - `sudo install -m 0755 -d /etc/apt/keyrings`
+    - `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg` 
+    - `sudo chmod a+r /etc/apt/keyrings/docker.gpg` 
+    - `echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \` 
+    - `$(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null` 
+    - `sudo apt-get update` 
+    - `sudo apt-get upgrade` 
+    - `sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin` 
+    - `sudo docker run hello-world` (to verify) 
 
